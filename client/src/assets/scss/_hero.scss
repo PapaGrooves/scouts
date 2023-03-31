@@ -1,0 +1,34 @@
+@import "colors";
+@import "breakpoints";
+
+.hero {
+  min-height: 500px;
+  width: 100%;
+//   position of content
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // gradient
+  background: $main;
+  background: linear-gradient(
+    357deg,
+    rgba(93, 36, 113, 1) 0%,
+    rgba(162, 76, 192, 1) 100%
+  );
+  // clip path
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
+
+overflow: visible;
+  .hero_title {
+    margin: 32px auto ;
+    margin-top: -80px;
+    h1 {
+      color: $white;
+      font-size: clamp(64px, 10vw, 128px);
+    }
+    
+  }
+ 
+}
