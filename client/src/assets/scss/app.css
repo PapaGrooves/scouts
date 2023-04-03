@@ -6,6 +6,43 @@
   font-family: "K2D", sans-serif;
 }
 
+body {
+  min-height: 100vh;
+}
+
+p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+button {
+  border: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  background-color: #9ED628;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 0px 29px -6px rgb(0, 0, 0);
+  transition: 1s ease-in-out;
+}
+button:hover {
+  color: white;
+  background-color: #597815;
+}
+
+.section_title {
+  text-align: center;
+  padding: 64px;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .section_title {
+    text-align: left;
+  }
+}
 a {
   color: #000;
 }
@@ -74,7 +111,7 @@ a {
   display: block;
   height: 2px;
   position: relative;
-  transition: background 0.2s ease-out;
+  transition: background 0.5s ease-in-out;
   width: 16px;
 }
 .header .menu-icon .navicon::before, .header .menu-icon .navicon::after {
@@ -166,11 +203,10 @@ a {
   background: linear-gradient(357deg, rgb(93, 36, 113) 0%, rgb(162, 76, 192) 100%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
-  overflow: visible;
 }
 .hero .hero_title {
   margin: 32px auto;
-  margin-top: -80px;
+  margin-top: -40px;
 }
 .hero .hero_title h1 {
   color: #f0e6e6;
@@ -178,10 +214,13 @@ a {
 }
 
 footer {
-  background-color: slategray;
+  background-color: rgb(49, 49, 49);
+  color: #f0e6e6;
   width: 100%;
-  position: absolute;
-  bottom: 0;
+}
+footer .copyright {
+  text-align: center;
+  padding: 16px;
 }
 
 .home_hero {
@@ -191,6 +230,7 @@ footer {
   justify-content: center;
   gap: 32px;
   margin: 32px;
+  margin-bottom: 128px;
 }
 .home_hero .home_hero_text {
   width: 300px;
@@ -210,10 +250,6 @@ footer {
 .home_hero .home_hero_text .home_hero_text_top div img {
   width: 100%;
 }
-.home_hero .home_hero_text .home_hero_text_bottom p {
-  font-size: 16px;
-  line-height: 24px;
-}
 .home_hero .home_hero_card {
   width: 300px;
   height: 300px;
@@ -222,6 +258,7 @@ footer {
   background-image: url(../images/cubs.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 0px 0px 29px -6px rgb(0, 0, 0);
 }
 .home_hero .home_hero_card .back {
   width: 100%;
@@ -231,25 +268,170 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  -webkit-clip-path: polygon(69% 54%, 92% 50%, 100% 60%, 100% 100%, 0 100%, 0% 60%, 31% 64%);
-  clip-path: polygon(69% 54%, 92% 50%, 100% 60%, 100% 100%, 0 100%, 0% 60%, 31% 64%);
+  -webkit-clip-path: polygon(59% 50%, 87% 39%, 100% 50%, 100% 100%, 0 100%, 0 50%, 38% 44%);
+  clip-path: polygon(59% 50%, 87% 39%, 100% 50%, 100% 100%, 0 100%, 0 50%, 38% 44%);
 }
 .home_hero .home_hero_card .back .front {
   width: 100%;
   height: 95%;
   background-color: rgb(49, 49, 49);
+  color: #f0e6e6;
   border-radius: 16px;
-  -webkit-clip-path: polygon(69% 54%, 92% 50%, 100% 60%, 100% 100%, 0 100%, 0% 60%, 31% 64%);
-  clip-path: polygon(69% 54%, 92% 50%, 100% 60%, 100% 100%, 0 100%, 0% 60%, 31% 64%);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  -webkit-clip-path: polygon(59% 50%, 87% 39%, 100% 50%, 100% 100%, 0 100%, 0 50%, 38% 44%);
+  clip-path: polygon(59% 50%, 87% 39%, 100% 50%, 100% 100%, 0 100%, 0 50%, 38% 44%);
+}
+.home_hero .home_hero_card .back .front p {
+  font-size: 16px;
+  line-height: 24px;
 }
 
 @media (min-width: 768px) {
   .home_hero {
     gap: 64px;
+    margin-bottom: 0;
+    margin-top: -40px;
   }
 }
 @media (min-width: 1200px) {
   .home_hero {
     gap: 128px;
+  }
+}
+.smallcard_wrap {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  background: rgba(162, 76, 192, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.smallcard_wrap .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.smallcard_wrap .content .img {
+  width: 96px;
+  height: 96px;
+}
+.smallcard_wrap .content .img img {
+  width: 100%;
+  height: 100%;
+}
+.smallcard_wrap .content h3 {
+  font-size: 24px;
+}
+
+.bigcard_wrap {
+  width: 250px;
+  height: 350px;
+  border-radius: 16px;
+  background-color: red;
+  position: relative;
+}
+.bigcard_wrap img {
+  position: absolute;
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.bigcard_wrap .overlay {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #f0e6e6;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.section_home_events .card_wrap {
+  width: 100%;
+  padding-bottom: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.section_home_guides {
+  background-image: url(../images/mountains.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0px 0px 29px -6px rgb(0, 0, 0);
+}
+.section_home_guides .card_wrap {
+  width: 100%;
+  padding-bottom: 128px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.section_home_location .section_home_location_content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.section_home_location .section_home_location_content .section_home_location_img {
+  background-image: url(../images/map.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 29px -6px rgb(0, 0, 0);
+  width: 80%;
+  max-width: 800px;
+  height: 350px;
+  margin: auto 32px;
+  border-radius: 16px;
+}
+.section_home_location .section_home_location_content .section_home_location_info {
+  margin: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.section_home_location .section_home_location_content .section_home_location_info .info {
+  max-width: 256px;
+  margin: auto;
+}
+.section_home_location .section_home_location_content .section_home_location_info .info button {
+  margin-top: 16px;
+}
+.section_home_location .section_home_location_content .section_home_location_info .img {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+.section_home_location .section_home_location_content .section_home_location_info .img img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .section_home_location .section_home_location_info {
+    flex-direction: row-reverse;
   }
 }/*# sourceMappingURL=app.css.map */

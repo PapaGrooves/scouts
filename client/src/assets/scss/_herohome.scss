@@ -1,5 +1,4 @@
-@import "colors";
-@import "breakpoints";
+@import "utils";
 
 .home_hero {
   display: flex;
@@ -8,7 +7,7 @@
   justify-content: center;
   gap: 32px;
   margin: 32px;
-
+  margin-bottom: 128px;
 
   .home_hero_text {
     width: 300px;
@@ -29,10 +28,7 @@
       }
     }
     .home_hero_text_bottom {
-      p {
-        font-size: 16px;
-        line-height: 24px;
-      }
+      
     }
   }
 
@@ -45,6 +41,10 @@
     background-image: url(../images/cubs.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+
+    -webkit-box-shadow: $box-shadow;
+    -moz-box-shadow: $box-shadow;
+    box-shadow: $box-shadow;
     .back {
       width: 100%;
       height: 100%;
@@ -55,49 +55,29 @@
       flex-direction: column;
       justify-content: flex-end;
 
-      -webkit-clip-path: polygon(
-        69% 54%,
-        92% 50%,
-        100% 60%,
-        100% 100%,
-        0 100%,
-        0% 60%,
-        31% 64%
-      );
-      clip-path: polygon(
-        69% 54%,
-        92% 50%,
-        100% 60%,
-        100% 100%,
-        0 100%,
-        0% 60%,
-        31% 64%
-      );
+      -webkit-clip-path: $clip-path;
+      clip-path: $clip-path;
 
       .front {
         width: 100%;
         height: 95%;
         background-color: $gray;
+        color: $white;
         border-radius: 16px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
 
-        -webkit-clip-path: polygon(
-          69% 54%,
-          92% 50%,
-          100% 60%,
-          100% 100%,
-          0 100%,
-          0% 60%,
-          31% 64%
-        );
-        clip-path: polygon(
-            69% 54%,
-            92% 50%,
-            100% 60%,
-            100% 100%,
-            0 100%,
-            0% 60%,
-            31% 64%
-            )
+        -webkit-clip-path: $clip-path;
+        clip-path: $clip-path;
+            h2 {
+
+            }
+            p {
+              font-size: 16px;
+              line-height: 24px;;
+            }
             
       }
     }
@@ -108,6 +88,8 @@
 @media (min-width: $bpTablet) {
     .home_hero {
         gap: 64px;
+        margin-bottom: 0;
+        margin-top: -40px;
     }
 }
 

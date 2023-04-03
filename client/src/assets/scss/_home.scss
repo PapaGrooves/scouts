@@ -1,0 +1,100 @@
+@import "utils";
+
+.section_home_events {
+   
+    .card_wrap {
+    width: 100%;
+    padding-bottom: 64px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    }
+}
+
+.section_home_guides {
+  background-image: url(../images/mountains.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+
+  .card_wrap {
+    width: 100%;
+    padding-bottom: 128px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+
+.section_home_location {
+  .section_home_location_content {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .section_home_location_img {
+      background-image: url(../images/map.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      -webkit-box-shadow: $box-shadow;
+      -moz-box-shadow: $box-shadow;
+      box-shadow: $box-shadow;
+
+      width: 80%;
+      max-width: 800px;
+      height: 350px;
+      margin: auto 32px;
+      border-radius: 16px;
+    }
+
+    .section_home_location_info {
+      margin: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      .info {
+        max-width: 256px;
+        margin: auto;
+        p {
+        }
+        button {
+          margin-top: 16px;
+        }
+      }
+
+      .img {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $bpTablet) {
+  .section_home_location {
+    .section_home_location_info {
+      flex-direction: row-reverse;
+      // flex-wrap:wrap-reverse;
+      .info {
+      }
+    }
+  }
+}

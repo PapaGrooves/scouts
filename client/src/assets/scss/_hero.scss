@@ -1,5 +1,4 @@
-@import "colors";
-@import "breakpoints";
+@import "utils";
 
 .hero {
   min-height: 500px;
@@ -17,13 +16,12 @@
     rgba(162, 76, 192, 1) 100%
   );
   // clip path
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
+  -webkit-clip-path: $hero-clip-path;
+  clip-path: $hero-clip-path;
 
-overflow: visible;
   .hero_title {
     margin: 32px auto ;
-    margin-top: -80px;
+    margin-top: -40px;
     h1 {
       color: $white;
       font-size: clamp(64px, 10vw, 128px);
