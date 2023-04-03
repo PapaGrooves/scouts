@@ -10,11 +10,7 @@
   justify-content: center;
   // gradient
   background: $main;
-  background: linear-gradient(
-    357deg,
-    rgba(93, 36, 113, 1) 0%,
-    rgba(162, 76, 192, 1) 100%
-  );
+  background: $main-gradient;
   // clip path
   -webkit-clip-path: $hero-clip-path;
   clip-path: $hero-clip-path;

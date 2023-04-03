@@ -40,8 +40,9 @@ const Home = () => {
   {guides.map((guide) => {
     console.log(guide);
     return (
+      <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="blank">
     <SmallCard name={guide.name} icon={guide.icon} />
-
+    </a>
     );
   })}
         </div>

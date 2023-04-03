@@ -19,18 +19,33 @@ const Hero = () => {
         </>
       );
   }
+
   else if (path == "/badges") {
     return (
       <>
         <div className="hero">
           <div className="hero_title">
-            <h1> {title}</h1>
+            <h1>{title}</h1>
           </div>
           <SearchBar />
         </div>
       </>
     );
-  } else {
+  } 
+  
+  else if (path == "/notfound") {
+    return (
+      <>
+      <div className="hero">
+          <div className="hero_title">
+            <h1>404</h1>
+          </div>
+        </div>
+      </>
+    )
+  } 
+  
+  else {
     return (
       <>
         <div className="hero">

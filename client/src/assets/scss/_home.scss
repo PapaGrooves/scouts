@@ -79,10 +79,6 @@
         width: 200px;
         height: 200px;
         margin: auto;
-        img {
-          width: 100%;
-          height: 100%;
-        }
       }
     }
   }
@@ -92,7 +88,6 @@
   .section_home_location {
     .section_home_location_info {
       flex-direction: row-reverse;
-      // flex-wrap:wrap-reverse;
       .info {
       }
     }

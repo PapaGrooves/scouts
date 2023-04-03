@@ -10,6 +10,7 @@ import Games from './pages/Games';
 import Helpers from './pages/Helpers'
 import Login from './pages/Login'
 import Hero from './components/Hero';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/helpers" element={<Helpers />} />
           <Route path="/login" element={<Login />} />
+
+          <Route path='*' element={<NotFound />}/>
         </Routes>
         <Footer />
       </BrowserRouter></>
