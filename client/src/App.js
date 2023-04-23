@@ -11,6 +11,7 @@ import Helpers from './pages/Helpers'
 import Login from './pages/Login'
 import Hero from './components/Hero';
 import NotFound from './pages/NotFound';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
           <Route path="/games" element={<Games />} />
           <Route path="/helpers" element={<Helpers />} />
           <Route path="/login" element={<Login />} />
-
+          <Route path='/signup' element={<Signup />} />
+          {/* 404 page */}
           <Route path='*' element={<NotFound />}/>
         </Routes>
         <Footer />

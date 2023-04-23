@@ -1,8 +1,10 @@
+// break points
 $bpMobile: 320px;
 $bpTablet: 768px;
 $bpLaptop: 1024px;
 $bpDesktop: 1200px;
 
+// colors, t = transparent
 $main: #a24cc0;
 $main-dark: #4c255b;
 $main-gradient: linear-gradient(
@@ -22,7 +24,10 @@ $accent-gradient-t: linear-gradient(356deg, rgba(77,103,21,0.55) 0%, rgba(158,21
 
 $white: #f0e6e6;
 $gray: rgb(49, 49, 49);
+$gray-t: rgba(49,49,49, 0.8);
+$light-gray: rgb(210, 207, 207);
 
+// clip paths
 $clip-path: polygon(
   59% 50%,
   87% 39%,

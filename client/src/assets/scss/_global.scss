@@ -12,6 +12,9 @@ body {
   min-height: 100vh;
 }
 
+ul, li {
+  list-style-type: none;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -26,6 +29,16 @@ img {
   width: 100%;
   height: 100%;
 }
+input {
+border: none;
+padding: 8px;
+text-decoration: none;
+outline: none;
+&:focus {
+  border: none;
+}
+
+}
 button {
   border: none;
   font-weight: bold;
@@ -35,8 +48,8 @@ button {
   cursor: pointer;
 
   -webkit-box-shadow: $box-shadow;
--moz-box-shadow: $box-shadow;
-box-shadow: $box-shadow;  
+  -moz-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
 
   transition: 1s ease-in-out;
   &:hover {

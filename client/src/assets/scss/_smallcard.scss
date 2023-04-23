@@ -18,12 +18,12 @@
 
   cursor: pointer;
 
-  transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in;
   &:hover {
-    width: 220px;
-    height: 220px;
-    background: $accent-gradient-t;
-    transition: 0.5s ease-in-out;
+    width: 215px;
+    height: 215px;
+    // background: $accent-gradient-t;
+    transition: 0.5s ease-in;
   }
   .content {
     display: flex;
@@ -31,6 +31,7 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
+    text-align: center;
 
     .img {
         width: 96px;

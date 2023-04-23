@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
-import SearchBar from "./Searchbar";
 import HeroHome from "./HeroHome";
+
+
 const Hero = () => {
   // to display name of page, we take the current location
   // then extract the path name of that location
@@ -9,6 +10,7 @@ const Hero = () => {
   const path = location.pathname;
   const title = path.substring(1).toUpperCase();
 
+  // const paths = ["/gallery", "/games", "/helpers", "/login", "/signup", "/", "/badges"]
 
   if (path == "/") {
     return (
@@ -19,26 +21,14 @@ const Hero = () => {
         </>
       );
   }
-
-  else if (path == "/badges") {
-    return (
-      <>
-        <div className="hero">
-          <div className="hero_title">
-            <h1>{title}</h1>
-          </div>
-          <SearchBar />
-        </div>
-      </>
-    );
-  } 
   
   else if (path == "/notfound") {
     return (
       <>
+      
       <div className="hero">
           <div className="hero_title">
-            <h1>404</h1>
+            <h1>{title}</h1>
           </div>
         </div>
       </>
@@ -50,7 +40,7 @@ const Hero = () => {
       <>
         <div className="hero">
           <div className="hero_title">
-            <h1> {title}</h1>
+            <h1>{title}</h1>
           </div>
         </div>
       </>

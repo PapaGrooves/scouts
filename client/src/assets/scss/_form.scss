@@ -1,0 +1,39 @@
+@import "utils";
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    background: $main-gradient-t;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    padding: 32px;
+    max-width: 400px;
+    margin: 64px auto;
+
+    border-radius: 16px;
+    input {
+        border-radius: 8px;
+        &:focus {
+            outline: 2px solid $gray;
+        }
+    }
+    button {
+        margin:  16px ;
+    }
+    .link {
+        color: red;
+        text-decoration: underline;
+        &:hover {
+            color: rgb(127, 3, 3);
+        }
+    }
+    p {
+        text-align: center;
+    }
+}

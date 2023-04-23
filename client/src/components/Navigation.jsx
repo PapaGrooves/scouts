@@ -5,7 +5,7 @@ const Navigation = () => {
 
 
   const guestNav = (
-    <ul class="menu">
+    <ul className="menu">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/badges">Badges</Link></li>
                 <li><Link to="/gallery">Gallery</Link></li>
@@ -15,7 +15,7 @@ const Navigation = () => {
   );
 
   const helperNav = (
-    <ul class="menu">
+    <ul className="menu">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/badges">Badges</Link></li>
                 <li><Link to="/gallery">Gallery</Link></li>
@@ -26,7 +26,7 @@ const Navigation = () => {
   );
 
   const adminNav = (
-    <ul class="menu">
+    <ul className="menu">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/badges">Badges</Link></li>
                 <li><Link to="/gallery">Gallery</Link></li>
@@ -40,13 +40,13 @@ const Navigation = () => {
     <>
 {/* STUB original code by  mutedblues on Codepen.io
     https://codepen.io/mutedblues/pen/MmPNPG?editors=0110 */}
-      <div class="header">
+      <div className="header">
         <div className="logo">
          <Link to="/"> <img src={Fleur} alt="" /> </Link>
         </div>
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
-        <label class="menu-icon" htmlFor="menu-btn">
-          <span class="navicon"></span>
+        <input className="menu-btn" type="checkbox" id="menu-btn" />
+        <label className="menu-icon" htmlFor="menu-btn">
+          <span className="navicon"></span>
         </label>
         {adminNav}
       </div>

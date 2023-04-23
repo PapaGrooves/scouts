@@ -21,12 +21,11 @@ const Home = () => {
         <div className="card_wrap">
 
           {events.map((event) => {
+            {/* FIXME add event data to the database and display 4 latest entries */}
             return (
-              <BigCard img={event.img}/>
+              <BigCard img={event.img} title={event.title} btn={event.btn}/>
             )
           })}
-          {/* FIXME add event data to the database and display 4 latest entries */}
-          {/* <BigCard /> */}
         </div>
       </section>
 
@@ -38,7 +37,6 @@ const Home = () => {
 <div className="card_wrap">
 
   {guides.map((guide) => {
-    console.log(guide);
     return (
       <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="blank">
     <SmallCard name={guide.name} icon={guide.icon} />

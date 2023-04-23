@@ -5,11 +5,11 @@ const BigCard = (props) => {
             <img src={props.img} alt="" />
             <div className="overlay">
                 <div className="text">
-                <h2>Header</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab voluptas expedita accusantium molestiae? Laudantium in rem perspiciatis voluptate, molestias quos?</p>
+                <h2>{props.title}</h2>
+                <p>{props.desc}</p>
                 </div>
                 <div className="btn">
-                <button>Event Page</button>
+                <button>{props.btn}</button>
                 </div>
             </div>
         </div>
