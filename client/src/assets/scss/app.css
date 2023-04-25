@@ -24,6 +24,14 @@ p {
   line-height: 24px;
 }
 
+.anchor {
+  color: #d11a2a;
+  text-decoration: underline;
+}
+.anchor:hover {
+  color: #8d101b;
+}
+
 img {
   width: 100%;
   height: 100%;
@@ -46,7 +54,7 @@ button {
   background-color: #9ed628;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0px 0px 29px -6px rgb(0, 0, 0);
+  box-shadow: 0px 0px 29px -6px #000000;
   transition: 1s ease-in-out;
 }
 button:hover {
@@ -220,7 +228,7 @@ a {
   align-items: center;
   justify-content: center;
   background: #a24cc0;
-  background: linear-gradient(357deg, rgb(93, 36, 113) 0%, rgb(162, 76, 192) 100%);
+  background: linear-gradient(357deg, #5d2471 0%, #a24cc0 100%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
 }
@@ -237,11 +245,11 @@ a {
   border-radius: 8px;
 }
 .searchBar:focus {
-  outline: 2px solid rgb(49, 49, 49);
+  outline: 2px solid #313131;
 }
 
 footer {
-  background-color: rgb(49, 49, 49);
+  background-color: #313131;
   color: #f0e6e6;
   width: 100%;
 }
@@ -282,7 +290,7 @@ footer .copyright {
   background-image: url(../images/cubs.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: 0px 0px 29px -6px rgb(0, 0, 0);
+  box-shadow: 0px 0px 29px -6px #000000;
 }
 .home_hero .home_hero_card .back {
   width: 100%;
@@ -298,7 +306,7 @@ footer .copyright {
 .home_hero .home_hero_card .back .front {
   width: 100%;
   height: 95%;
-  background-color: rgb(49, 49, 49);
+  background-color: #313131;
   color: #f0e6e6;
   border-radius: 16px;
   padding: 16px;
@@ -329,7 +337,7 @@ footer .copyright {
   width: 200px;
   height: 200px;
   border-radius: 16px;
-  background: linear-gradient(0deg, rgba(93, 36, 113, 0.55) 0%, rgba(162, 76, 192, 0.65) 100%);
+  background: linear-gradient(0deg, rgba(93, 36, 113, 0.5490196078) 0%, rgba(162, 76, 192, 0.6509803922) 100%);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
@@ -378,7 +386,7 @@ footer .copyright {
   height: 100%;
   padding: 16px;
   border-radius: 16px;
-  background: rgba(49, 49, 49, 0.8);
+  background: rgba(48, 48, 48, 0.8);
   color: #f0e6e6;
   position: relative;
   z-index: 1;
@@ -402,7 +410,7 @@ footer .copyright {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  box-shadow: 0px 0px 29px -6px rgb(0, 0, 0);
+  box-shadow: 0px 0px 29px -6px #000000;
 }
 .section_home_guides .card_wrap {
   width: 100%;
@@ -427,7 +435,7 @@ footer .copyright {
   background-image: url(../images/map.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  box-shadow: 0px 0px 29px -6px rgb(0, 0, 0);
+  box-shadow: 0px 0px 29px -6px #000000;
   width: 80%;
   max-width: 800px;
   height: 350px;
@@ -500,7 +508,7 @@ footer .copyright {
   height: 100%;
   max-height: 600px;
   margin: auto 32px;
-  background: linear-gradient(356deg, rgb(77, 103, 21) 0%, rgb(158, 214, 40) 100%);
+  background: linear-gradient(356deg, #4d6715 0%, #9ed628 100%);
   padding: 32px;
   border-radius: 32px;
   display: flex;
@@ -520,7 +528,7 @@ footer .copyright {
   font-weight: bold;
   font-size: 32px;
   cursor: pointer;
-  outline: 1.5px solid rgb(49, 49, 49);
+  outline: 1.5px solid #313131;
 }
 .badgesModal .header {
   width: 100%;
@@ -547,35 +555,31 @@ footer .copyright {
   overflow: scroll;
 }
 .badgesModal .tasks ol {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  margin: auto 24px;
 }
 .badgesModal .tasks ol li {
+  padding: 4px;
   display: list-item;
   list-style-type: decimal;
   list-style-position: outside;
 }
-.badgesModal .tasks p {
-  margin: 8px;
+.badgesModal .tasks ol ul li {
+  list-style-type: lower-alpha;
+  list-style-position: outside;
 }
-.badgesModal .tasks .bullets li {
-  margin: 8px;
+.badgesModal .tasks ol ul li .bullets li {
   list-style-type: circle;
   list-style-position: outside;
 }
-.badgesModal .tasks .bullets .letters li {
-  margin: 8px;
+.badgesModal .tasks ol ul li .bullets .letters li {
   list-style-type: lower-alpha;
   list-style-position: outside;
 }
-.badgesModal .tasks .letters li {
-  margin: 8px;
+.badgesModal .tasks ol ul li .letters li {
   list-style-type: lower-alpha;
-  list-style-position: inside;
+  list-style-position: outside;
 }
-.badgesModal .tasks .letters .bullets li {
-  margin: 8px;
+.badgesModal .tasks ol ul li .letters .bullets li {
   list-style-type: circle;
   list-style-position: outside;
 }
@@ -600,7 +604,7 @@ footer .copyright {
   text-align: center;
 }
 .badgesSearch input {
-  background: rgb(210, 207, 207);
+  background: #d2cfcf;
   width: 300px;
 }
 
@@ -700,11 +704,74 @@ footer .copyright {
   margin: 8px;
 }
 
+.user {
+  width: 80%;
+  max-width: 880px;
+  margin: auto;
+  padding: 8px;
+  border-radius: 16px;
+  background: linear-gradient(310deg, #313131 0%, #5b5a5a 100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 8px;
+  align-items: center;
+  gap: 16px;
+  color: #f0e6e6;
+  text-align: center;
+}
+.user .name,
+.user .email,
+.user .disclosure,
+.user .btns {
+  margin: auto;
+  position: relative;
+  width: 200px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user label {
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.user .btns {
+  display: flex;
+  gap: 8px;
+}
+.user .btns button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+.user .btns button img {
+  width: 24px;
+  height: 24px;
+}
+.user .btns .delete {
+  background: #d11a2a;
+}
+.user .btns .delete:hover {
+  background: #8d101b;
+}
+
+.addInfo {
+  margin: auto;
+  text-align: center;
+}
+.addInfo p {
+  margin: 16px auto;
+  font-size: 12px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: linear-gradient(0deg, rgba(93, 36, 113, 0.55) 0%, rgba(162, 76, 192, 0.65) 100%);
+  background: linear-gradient(0deg, rgba(93, 36, 113, 0.5490196078) 0%, rgba(162, 76, 192, 0.6509803922) 100%);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
@@ -719,17 +786,10 @@ footer .copyright {
   border-radius: 8px;
 }
 .form input:focus {
-  outline: 2px solid rgb(49, 49, 49);
+  outline: 2px solid #313131;
 }
 .form button {
   margin: 16px;
-}
-.form .link {
-  color: red;
-  text-decoration: underline;
-}
-.form .link:hover {
-  color: rgb(127, 3, 3);
 }
 .form p {
   text-align: center;

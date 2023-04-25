@@ -1,0 +1,75 @@
+@import "utils";
+
+.user {
+  width: 80%;
+  max-width: 880px;
+  margin: auto;
+  padding: 8px;
+  border-radius: 16px;
+
+  background: $gray-gradient;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 8px;
+  align-items: center;
+
+  gap: 16px;
+  color: $white;
+  text-align: center;
+
+  .name,
+  .email,
+  .disclosure,
+  .btns {
+    margin: auto;
+    position: relative;
+    width: 200px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  label {
+    font-size: 10px;
+    font-weight: bold;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .btns {
+    display: flex;
+    gap: 8px;
+    button {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .delete {
+        background: $red;
+        &:hover {
+            background: $red-dark;
+        }
+
+    }
+  }
+}
+
+.addInfo {
+    margin: auto;
+    text-align: center;
+     p {
+        margin: 16px auto;
+        font-size: 12px;
+     }
+}

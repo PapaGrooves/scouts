@@ -12,7 +12,7 @@ const Login = () => {
 
             <button type="submit">Login</button>
 
-            <p>Dont have an account? Become a helper <Link className="link" to="/signup">here.</Link> </p>
+            <p>Dont have an account? Become a helper <Link className="anchor" to="/signup">here.</Link> </p>
         </form>
         </>
     );

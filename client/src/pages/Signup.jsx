@@ -21,7 +21,7 @@ const Signup = () => {
 
             <button type="submit">Signup</button>
 
-            <p>Have an account already? Login <Link className="link" to="/login">here.</Link> </p>
+            <p>Have an account already? Login <Link className="anchor" to="/login">here.</Link> </p>
         </form>
         </>
     );

@@ -1,5 +1,5 @@
 import Logo from "../assets/images/logo.png";
-
+import { Link } from "react-router-dom"
 const HeroHome = () => {
   return (
     <>
@@ -27,7 +27,7 @@ const HeroHome = () => {
               <p>
                 Here at Obanshire we can always use the extra help . If you want 
                 to join us in our adventures and help the Cubs earn
-                their badges, sign up here.
+                their badges, sign up <Link className="anchor" to="/signup">here.</Link>
               </p>
             </div>
           </div>

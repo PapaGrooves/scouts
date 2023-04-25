@@ -62,49 +62,53 @@
 
   .tasks {
     overflow: scroll;
+    // every object is wrapped in an 'ol'
+    // then groups of data are wrapperd in 'li'
+    // for example, an 'h3' and a 'p' would in an 'li' together
     ol {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      margin: auto 24px;
       li {
+        padding: 4px;
         display: list-item;
         list-style-type: decimal;
-        list-style-position:outside;
-      }
-    }
-
-    p {
-      margin: 8px;
-    }
-
-    .bullets {
-      li {
-        margin: 8px;
-        list-style-type: circle;
         list-style-position: outside;
       }
 
-      .letters {
+      ul {
+        // 'ul' here is used for extra lists, like multiple tasks for one step
         li {
-          margin: 8px;
-        list-style-type: lower-alpha;
-        list-style-position: outside;
-        }
-      }
-    }
+          list-style-type: lower-alpha;
+          list-style-position: outside;
 
-    .letters {
-      li {
-        margin: 8px;
-        list-style-type: lower-alpha;
-        list-style-position: inside;
-      }
+          // in some instances there is a 'ul' nested in another 'ul'
+          // every list using bullet points uses 'bullets' class
+          // similarly, alphabet lists use the 'letters' class
+          // we have to account for both types of nesting wuth the different 'ul'
+          .bullets {
+            li {
+              list-style-type: circle;
+              list-style-position: outside;
+            }
+            .letters {
+              li {
+                list-style-type: lower-alpha;
+                list-style-position: outside;
+              }
+            }
+          }
 
-      .bullets {
-        li {
-          margin: 8px;
-        list-style-type: circle;
-        list-style-position: outside;
+          .letters {
+            li {
+              list-style-type: lower-alpha;
+              list-style-position: outside;
+            }
+            .bullets {
+              li {
+                list-style-type: circle;
+                list-style-position: outside;
+              }
+            }
+          }
         }
       }
     }
@@ -136,4 +140,3 @@
     width: 300px;
   }
 }
-

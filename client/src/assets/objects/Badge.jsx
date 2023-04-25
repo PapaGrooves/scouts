@@ -294,7 +294,7 @@ const Badge = [
           <h3>Observe the moon, using binoculars or a telescope if you can.</h3>
           <p>Describe some of its features.</p>
         </li>
-        <li>Identify three constellations.</li>
+        <li><h3>Identify three constellations.</h3></li>
         <li>
           <h3>
             Find out about two space-related subjects and present some
@@ -501,9 +501,6 @@ const Badge = [
               </p>
             </li>
           </ul>
-        </li>
-        <li>
-          <h3></h3>
         </li>
         <li>
           <h3>

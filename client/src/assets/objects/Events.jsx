@@ -4,7 +4,6 @@ import BG3 from '../images/bigcards/bg3.jpg';
 
 const Events = [
     {
-
         title: "Event 1",
         img: `${BG1}`,
         btn: "Learn More",

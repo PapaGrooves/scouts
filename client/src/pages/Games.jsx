@@ -11,7 +11,7 @@ const Games = () => {
 
         {game.map((play) => {
             return (
-                <BigCard img={play.img} title={play.title} desc={play.desc} btn={play.btn}/>
+                <BigCard img={play.img} title={play.title} desc={play.desc} btn={play.btn} link={play.link}/>
                 )
             })}
             </div>

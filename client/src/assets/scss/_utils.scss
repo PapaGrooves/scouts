@@ -1,41 +1,27 @@
-// break points
+// NOTE break points
 $bpMobile: 320px;
 $bpTablet: 768px;
 $bpLaptop: 1024px;
 $bpDesktop: 1200px;
-
-// colors, t = transparent
+// NOTE colors, t = transparent
 $main: #a24cc0;
 $main-dark: #4c255b;
-$main-gradient: linear-gradient(
-  357deg,
-  rgba(93, 36, 113, 1) 0%,
-  rgba(162, 76, 192, 1) 100%
-);
-$main-gradient-t: linear-gradient(
-  0deg,
-  rgba(93, 36, 113, 0.55) 0%,
-  rgba(162, 76, 192, 0.65) 100%
-);
 $accent: #9ed628;
 $accent-dark: #597815;
-$accent-gradient: linear-gradient(356deg, rgba(77,103,21,1) 0%, rgba(158,214,40,1) 100%);
-$accent-gradient-t: linear-gradient(356deg, rgba(77,103,21,0.55) 0%, rgba(158,214,40,0.65) 100%);
-
 $white: #f0e6e6;
-$gray: rgb(49, 49, 49);
-$gray-t: rgba(49,49,49, 0.8);
-$light-gray: rgb(210, 207, 207);
-
-// clip paths
-$clip-path: polygon(
-  59% 50%,
-  87% 39%,
-  100% 50%,
-  100% 100%,
-  0 100%,
-  0 50%,
-  38% 44%
-);
+$gray: #313131;
+$gray-t: #303030cc;
+$light-gray: #d2cfcf;
+$red: #d11a2a;
+$red-dark: #8d101b;
+// NOTE gradients
+$main-gradient: linear-gradient(357deg, #5d2471 0%, #a24cc0 100%);
+$main-gradient-t: linear-gradient(0deg, #5d24718c 0%, #a24cc0a6 100%);
+$accent-gradient: linear-gradient(356deg, #4d6715 0%, #9ed628 100%);
+$accent-gradient-t: linear-gradient(356deg, #4d67158c 0%, #9ed628a6 100%);
+$gray-gradient: linear-gradient(310deg, #313131 0%, #5b5a5a 100%);
+// NOTE clip paths
+$clip-path: polygon(59% 50%, 87% 39%, 100% 50%, 100% 100%, 0 100%, 0 50%, 38% 44%);
 $hero-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 81%);
-$box-shadow: 0px 0px 29px -6px rgba(0, 0, 0, 1);
+// NOTE shadows
+$box-shadow: 0px 0px 29px -6px #000000;

@@ -3,7 +3,7 @@ import { useState } from "react";
 import List from "../components/List";
 
 const Badges = () => {
-  const [badge, setBadge] = useState(Badge);
+  // const [badge, setBadge] = useState(Badge);
 
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
