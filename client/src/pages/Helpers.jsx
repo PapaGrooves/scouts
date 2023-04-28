@@ -1,6 +1,5 @@
-import User from "../components/User";
 import { useState } from "react";
-
+import ListUsers from "../components/ListUsers";
 const Helpers = () => {
 
     const [inputText, setInputText] = useState("");
@@ -10,6 +9,8 @@ const Helpers = () => {
       setInputText(lowerCase);
     };
 
+
+    
     return(
         // FIXME 
         // Allow admins to edit and delete users
@@ -26,7 +27,7 @@ const Helpers = () => {
       <div className="addInfo">
         <p>To update your disclosure status, please email info@obanshire.com</p>
       </div>
-      <User input={inputText} />
+      <ListUsers input={inputText} />
         </>
     );
 }

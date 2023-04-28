@@ -13,6 +13,9 @@ const Signup = () => {
             <label htmlFor="lname">Last Name</label>
             <input type="text" name="lname" id="lname" placeholder="Surname" />
 
+            <label htmlFor="dob">Date of Birth</label>
+            <input type="date" name="date" id="dare" />
+
             <label htmlFor="password">Password</label>
             <input type="password" name="password" id="password" placeholder="************" />
 

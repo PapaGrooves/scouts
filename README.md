@@ -1,4 +1,8 @@
 
+# NOTE 
+# All objects are located in the assets folder 
+
+
 # ==========================
 # server folder dependancies
 # ==========================
