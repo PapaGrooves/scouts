@@ -7,8 +7,7 @@
 # server folder dependancies
 # ==========================
 
-# npm install express
-#
+# npm install mongodb express cors dotenv axios mongoose
 
 # ==========================
 # client folder dependancies
@@ -16,3 +15,4 @@
 
 # npm install reactjs-popup 
 # npm install react-image-gallery
+# npm install uuid

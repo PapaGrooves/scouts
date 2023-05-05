@@ -7,8 +7,13 @@ import Events from "../assets/objects/Events";
 import Scout from "../assets/images/scout.png"
 import { useState } from "react";
 
+import { v4 } from 'uuid'
+import { useLocation } from "react-router-dom";
+
 const Home = () => {
 
+  // const location = useLocation();
+  
   const [guides, setGuides] = useState(Guides);
   const [events, setEvents] = useState(Events);
   return (
@@ -20,10 +25,10 @@ const Home = () => {
 
         <div className="card_wrap">
 
-          {events.map((event) => {
+          {events.map((event) => { 
             {/* FIXME add event data to the database and display 4 latest entries */}
             return (
-              <BigCard img={event.img} title={event.title} btn={event.btn}/>
+              <BigCard key={v4()} img={event.img} title={event.title} btn={event.btn}/>
             )
           })}
         </div>
@@ -38,8 +43,8 @@ const Home = () => {
 
   {guides.map((guide) => {
     return (
-      <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="blank">
-    <SmallCard name={guide.name} icon={guide.icon} />
+      <a key={v4()} href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="blank">
+    <SmallCard  name={guide.name} icon={guide.icon} />
     </a>
     );
   })}

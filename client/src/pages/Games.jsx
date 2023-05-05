@@ -1,7 +1,7 @@
 import BigCard from "../components/BigCard";
 import Game from "../assets/objects/Games";
 import { useState } from "react";
-
+import { v4 } from "uuid";
 const Games = () => {
 
     const [game, setGame] = useState(Game);
@@ -11,7 +11,7 @@ const Games = () => {
 
         {game.map((play) => {
             return (
-                <BigCard img={play.img} title={play.title} desc={play.desc} btn={play.btn} link={play.link}/>
+                <BigCard key={v4()} img={play.img} title={play.title} desc={play.desc} btn={play.btn} link={play.link}/>
                 )
             })}
             </div>

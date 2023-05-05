@@ -2,6 +2,7 @@ import { React } from "react";
 import Badge from "../assets/objects/Badge";
 import SmallCard from "./SmallCard";
 import Popup from "reactjs-popup";
+import { v4 } from 'uuid'
 
 // STUB original code by Saleh-Mubashar on github.com
 // https://github.com/Saleh-Mubashar/React-Search
@@ -20,7 +21,7 @@ function List(props) {
   return (
     <div className="badgesWrap">
       {filteredData.map((item) => (
-        <Popup className="popup"
+        <Popup key={v4()} className="popup"
         trigger={
         <li >
           <SmallCard  icon={item.img} name={item.title} />
