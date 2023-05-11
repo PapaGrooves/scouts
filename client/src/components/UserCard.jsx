@@ -1,21 +1,32 @@
 import React from "react";
-
 import edit from "../assets/images/edit.png";
 import dlt from "../assets/images/delete.png";
-
 import Popup from "reactjs-popup";
+import { useUsersContext } from "../hooks/useUsersContext";
 
-const UserCard = (props) => {
+const UserCard = (props, {user}) => {
+
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
+  
   function openModal() {
     setIsOpen(true);
   }
-
   function closeModal() {
     setIsOpen(false);
   }
+  
+  const {dispatch} = useUsersContext()
 
+  const handleClick = async () => {
+    const response = await fetch("/api/users/" + user._id, {
+      method: "DELETE"
+    })
+    const json = await response.json()
+
+    if (response.ok) {
+      dispatch({type: "DELETE_USER", payload: json})
+    }
+  }
 
   return (
     <div className="user">
@@ -32,6 +43,11 @@ const UserCard = (props) => {
       <div className="disclosure">
         <label htmlFor="">Disclosure</label>
         <p>{props.disclosure}</p>
+      </div>
+
+      <div className="availability">
+        <label htmlFor="">Availability</label>
+        <p>{props.availability}</p>
       </div>
 
       <div className="btns">
@@ -87,6 +103,11 @@ const UserCard = (props) => {
                   </div>
 
                   <div>
+                    <label htmlFor="availability">Availability</label>
+                    <input type="text" id="availability" placeholder={props.availability}/>
+                  </div>
+
+                  <div>
                     <button type="submit">Update</button>
                   </div>
                 </form>
@@ -95,7 +116,9 @@ const UserCard = (props) => {
           )}
         </Popup>
 
-        <button className="delete">
+        <button className="delete" 
+        onClick={handleClick}
+        >
           <img src={dlt} alt="" />
         </button>
       </div>

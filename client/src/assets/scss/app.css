@@ -70,6 +70,17 @@ button:hover {
   margin: auto;
 }
 
+div.error {
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid #d11a2a;
+  background: #fbcccc;
+}
+
+input.error {
+  border: 2px solid #d11a2a;
+}
+
 @media (min-width: 768px) {
   .section_title {
     text-align: left;
@@ -706,7 +717,7 @@ footer .copyright {
 
 .user {
   width: 80%;
-  max-width: 880px;
+  max-width: 1080px;
   margin: auto;
   padding: 8px;
   border-radius: 16px;
@@ -722,6 +733,7 @@ footer .copyright {
 .user .name,
 .user .email,
 .user .disclosure,
+.user .availability,
 .user .btns {
   margin: auto;
   position: relative;

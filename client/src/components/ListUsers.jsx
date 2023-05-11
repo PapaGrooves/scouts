@@ -1,28 +1,55 @@
 // import { React } from "react";
-import Users from "../assets/objects/Users";
+import { useEffect } from "react";
 import UserCard from "./UserCard";
+import { useUsersContext } from "../hooks/useUsersContext"
 
-function ListUsers(props) {
-  const filteredData = Users.filter((el) => {
-    //if no input the return the original
-    if (props.input === "") {
-      return el;
+
+// const filteredData = Users.filter((el) => {
+  //   //if no input the return the original
+  //   if (props.input === "") {
+  //     return el;
+  //   }
+  //   //return the user which contains the user input
+  //   else {
+  //     return el.fname.toLowerCase().includes(props.input);
+  //   }
+  // });
+
+  
+  function ListUsers() {
+
+  const {users, dispatch} = useUsersContext()
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const response = await fetch("/api/users")
+      const json = await response.json()
+
+      if (response.ok) {
+        dispatch({type: "SET_USERS", payload: json})
+      }
     }
-    //return the item which contains the user input
-    else {
-      return el.fname.toLowerCase().includes(props.input);
-    }
-  });
+    fetchUsers()
+  }, [])
 
 
   return (
-      <div className="usersWrap">
-        {filteredData.map((item) => (
-          <li key={item.id}>
-            <UserCard fname={item.fname} lname={item.lname} name={item.fname + " " + item.lname} email={item.email} disclosure={item.disclosure} dob={item.dob.toString()}/>
-          </li>
-        ))}
-      </div>
+    <div className="usersWrap">
+      {users && users.map((user) => (
+        <li>
+          <UserCard
+            key={user._id}
+            fname={user.fname}
+            lname={user.lname}
+            name={user.fname + " " + user.lname}
+            email={user.email}
+            disclosure={user.disclosure}
+            dob={user.dob.toString()}
+            availability={user.availability}
+          />
+        </li>
+      ))}
+    </div>
   );
 }
 

@@ -6,6 +6,7 @@ const Users = [
         email: "johndoe@mail.com",
         disclosure: "Approved",
         dob: new Date("5/15/1998"),
+        availability: "Every THU, FRI and SAT",
         is_admin: 0,
     },
     {
@@ -15,6 +16,7 @@ const Users = [
         email: "janedane@mail.com",
         disclosure: "Approved",
         dob: new Date("19/7/1993"),
+        availability: "Mondays",
         is_admin: 1,
     },
     {
@@ -24,6 +26,7 @@ const Users = [
         email: "b@mail.com",
         disclosure: "Pending",
         dob: new Date("12/5/1948"),
+        availability: "Weekends",
         is_admin: 0,
     }
 ];

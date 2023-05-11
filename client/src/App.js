@@ -1,4 +1,4 @@
-import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 // components 
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
@@ -14,24 +14,28 @@ import NotFound from './pages/NotFound';
 import Signup from './pages/Signup';
 
 function App() {
+     let routes = (
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/badges" element={<Badges />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/games" element={<Games />} />
+        <Route path="/helpers" element={<Helpers />} />
+        <Route path="/login" element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        {/* 404 page */}
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    );
+
   return (
-    <>
-      <BrowserRouter>
+
+      <Router>
         <Navigation />
         <Hero />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/badges" element={<Badges />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/helpers" element={<Helpers />} />
-          <Route path="/login" element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-          {/* 404 page */}
-          <Route path='*' element={<NotFound />}/>
-        </Routes>
+        {routes}
         <Footer />
-      </BrowserRouter></>
+      </Router>
   );
 }
 

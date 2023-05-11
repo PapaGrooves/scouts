@@ -73,6 +73,17 @@ button {
   margin: auto;
 }
 
+div.error {
+padding: 16px;
+border-radius: 8px;
+border: 2px solid $red;
+background: #fbcccc
+}
+
+input.error {
+  border: 2px solid $red;
+}
+
 @media (min-width: $bpTablet) {
   .section_title {
     text-align: left;

@@ -3,29 +3,7 @@ import Fleur from "../assets/images/fleur.png"
 // import Home from '../pages/Home';
 const Navigation = () => {
 
-
-  const guestNav = (
-    <ul className="menu">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/badges">Badges</Link></li>
-                <li><Link to="/gallery">Gallery</Link></li>
-                <li><Link to="/games">Games</Link></li>
-                <li><Link to="/login">Login</Link></li>
-        </ul>
-  );
-
-  const helperNav = (
-    <ul className="menu">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/badges">Badges</Link></li>
-                <li><Link to="/gallery">Gallery</Link></li>
-                <li><Link to="/games">Games</Link></li>
-                <li><Link to="/helpers">Helpers</Link></li>
-                <li><Link to="/login">Login</Link></li>
-        </ul>
-  );
-
-  const adminNav = (
+  const Nav = (
     <ul className="menu">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/badges">Badges</Link></li>
@@ -48,7 +26,7 @@ const Navigation = () => {
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="navicon"></span>
         </label>
-        {adminNav}
+        {Nav}
       </div>
     </>
   );

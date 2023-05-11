@@ -2,8 +2,7 @@
 
 .user {
   width: 80%;
-  // height: 100px;
-  max-width: 880px;
+  max-width: 1080px;
   margin: auto;
   padding: 8px;
   border-radius: 16px;
@@ -22,6 +21,7 @@
   .name,
   .email,
   .disclosure,
+  .availability,
   .btns {
     margin: auto;
     position: relative;

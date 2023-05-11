@@ -8,7 +8,6 @@ import Scout from "../assets/images/scout.png"
 import { useState } from "react";
 
 import { v4 } from 'uuid'
-import { useLocation } from "react-router-dom";
 
 const Home = () => {
 

@@ -13,6 +13,4 @@
 # client folder dependancies
 # ==========================
 
-# npm install reactjs-popup 
-# npm install react-image-gallery
-# npm install uuid
+# npm install reactjs-popup react-image-gallery uuid
