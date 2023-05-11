@@ -323,7 +323,7 @@ footer .copyright {
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   -webkit-clip-path: polygon(59% 50%, 87% 39%, 100% 50%, 100% 100%, 0 100%, 0 50%, 38% 44%);
   clip-path: polygon(59% 50%, 87% 39%, 100% 50%, 100% 100%, 0 100%, 0 50%, 38% 44%);
 }

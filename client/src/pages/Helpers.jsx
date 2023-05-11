@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+// import { useState } from "react";
 import ListUsers from "../components/ListUsers";
 
 
 const Helpers = () => {
 
-  const [inputText, setInputText] = useState("");
+  // const [inputText, setInputText] = useState("");
 
-  let inputHandler = (e) => {
-    //convert input text to lower case
-    var lowerCase = e.target.value.toLowerCase();
-    setInputText(lowerCase);
-  };
+  // let inputHandler = (e) => {
+  //   //convert input text to lower case
+  //   var lowerCase = e.target.value.toLowerCase();
+  //   setInputText(lowerCase);
+  // };
 
 
 

@@ -12,7 +12,7 @@ const Hero = () => {
 
   // const paths = ["/gallery", "/games", "/helpers", "/login", "/signup", "/", "/badges"]
 
-  if (path == "/") {
+  if (path === "/") {
     return (
         <>
           <div className="hero">
@@ -22,7 +22,7 @@ const Hero = () => {
       );
   }
   
-  else if (path == "/notfound") {
+  else if (path === "/notfound") {
     return (
       <>
       

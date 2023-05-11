@@ -9,7 +9,7 @@ const BigCard = (props) => {
                 <p>{props.desc}</p>
                 </div>
                 <div className="btn">
-                <a href={props.link} target="_blank"><button>{props.btn}</button></a>
+                <a href={props.link} rel="noreferrer" target="_blank"><button>{props.btn}</button></a>
                 </div>
             </div>
         </div>

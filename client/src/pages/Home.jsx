@@ -13,8 +13,8 @@ const Home = () => {
 
   // const location = useLocation();
   
-  const [guides, setGuides] = useState(Guides);
-  const [events, setEvents] = useState(Events);
+  const [guides] = useState(Guides);
+  const [events] = useState(Events);
   return (
     <>
       <section className="section_home_events">
@@ -25,7 +25,6 @@ const Home = () => {
         <div className="card_wrap">
 
           {events.map((event) => { 
-            {/* FIXME add event data to the database and display 4 latest entries */}
             return (
               <BigCard key={v4()} img={event.img} title={event.title} btn={event.btn}/>
             )

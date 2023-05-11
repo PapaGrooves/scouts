@@ -6,14 +6,14 @@ import { useUsersContext } from "../hooks/useUsersContext";
 
 const UserCard = (props, {user}) => {
 
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  // const [modalIsOpen, setIsOpen] = React.useState(false);
   
-  function openModal() {
-    setIsOpen(true);
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
+  // function openModal() {
+  //   setIsOpen(true);
+  // }
+  // function closeModal() {
+  //   setIsOpen(false);
+  // }
   
   const {dispatch} = useUsersContext()
 

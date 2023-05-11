@@ -30,7 +30,7 @@ import { useUsersContext } from "../hooks/useUsersContext"
       }
     }
     fetchUsers()
-  }, [])
+  }, [dispatch])
 
 
   return (

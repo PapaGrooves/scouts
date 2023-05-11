@@ -4,7 +4,7 @@ import { useState } from "react";
 import { v4 } from "uuid";
 const Games = () => {
 
-    const [game, setGame] = useState(Game);
+    const [game] = useState(Game);
     return(
         <>
         <div className="gamesWrap">
