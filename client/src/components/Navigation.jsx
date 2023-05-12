@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Fleur from "../assets/images/fleur.png"
-// import Home from '../pages/Home';
+
 const Navigation = () => {
 
   const Nav = (

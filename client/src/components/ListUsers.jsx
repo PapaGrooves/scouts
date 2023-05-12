@@ -26,7 +26,7 @@ import { useUsersContext } from "../hooks/useUsersContext"
       const json = await response.json()
 
       if (response.ok) {
-        dispatch({type: "SET_USERS", payload: json})
+        dispatch({type: "SET_USER", payload: json})
       }
     }
     fetchUsers()
@@ -36,9 +36,8 @@ import { useUsersContext } from "../hooks/useUsersContext"
   return (
     <div className="usersWrap">
       {users && users.map((user) => (
-        <li>
+        <li key={user._id}>
           <UserCard
-            key={user._id}
             fname={user.fname}
             lname={user.lname}
             name={user.fname + " " + user.lname}

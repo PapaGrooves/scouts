@@ -1,10 +1,12 @@
 import React from "react";
+import Popup from "reactjs-popup";
+
 import edit from "../assets/images/edit.png";
 import dlt from "../assets/images/delete.png";
-import Popup from "reactjs-popup";
+
 import { useUsersContext } from "../hooks/useUsersContext";
 
-const UserCard = (props, {user}) => {
+const UserCard = ({user}, props) => {
 
   // const [modalIsOpen, setIsOpen] = React.useState(false);
   
@@ -14,8 +16,7 @@ const UserCard = (props, {user}) => {
   // function closeModal() {
   //   setIsOpen(false);
   // }
-  
-  const {dispatch} = useUsersContext()
+  const { dispatch } = useUsersContext()
 
   const handleClick = async () => {
     const response = await fetch("/api/users/" + user._id, {
@@ -27,6 +28,7 @@ const UserCard = (props, {user}) => {
       dispatch({type: "DELETE_USER", payload: json})
     }
   }
+
 
   return (
     <div className="user">
@@ -117,7 +119,7 @@ const UserCard = (props, {user}) => {
         </Popup>
 
         <button className="delete" 
-        onClick={handleClick}
+        onClick= {handleClick}
         >
           <img src={dlt} alt="" />
         </button>
