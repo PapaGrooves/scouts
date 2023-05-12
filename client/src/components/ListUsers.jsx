@@ -1,21 +1,7 @@
-// import { React } from "react";
 import { useEffect } from "react";
 import UserCard from "./UserCard";
 import { useUsersContext } from "../hooks/useUsersContext"
 
-
-// const filteredData = Users.filter((el) => {
-  //   //if no input the return the original
-  //   if (props.input === "") {
-  //     return el;
-  //   }
-  //   //return the user which contains the user input
-  //   else {
-  //     return el.fname.toLowerCase().includes(props.input);
-  //   }
-  // });
-
-  
   function ListUsers() {
 
   const {users, dispatch} = useUsersContext()
@@ -32,7 +18,6 @@ import { useUsersContext } from "../hooks/useUsersContext"
     fetchUsers()
   }, [dispatch])
 
-
   return (
     <div className="usersWrap">
       {users && users.map((user) => (
@@ -45,11 +30,11 @@ import { useUsersContext } from "../hooks/useUsersContext"
             disclosure={user.disclosure}
             dob={user.dob.toString()}
             availability={user.availability}
+            user={{user}}
           />
         </li>
       ))}
     </div>
   );
 }
-
 export default ListUsers;

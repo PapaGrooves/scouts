@@ -6,7 +6,7 @@ import dlt from "../assets/images/delete.png";
 
 import { useUsersContext } from "../hooks/useUsersContext";
 
-const UserCard = ({user}, props) => {
+const UserCard = (props, {user}) => {
 
   // const [modalIsOpen, setIsOpen] = React.useState(false);
   
