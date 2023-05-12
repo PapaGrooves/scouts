@@ -30,7 +30,7 @@ import { useUsersContext } from "../hooks/useUsersContext"
             disclosure={user.disclosure}
             dob={user.dob.toString()}
             availability={user.availability}
-            user={{user}}
+            user={user}
           />
         </li>
       ))}
