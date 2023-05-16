@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useUsersContext } from "../hooks/useUsersContext";
 
@@ -12,7 +12,9 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [rpassword, setRpassword] = useState("");
   const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([])
+  const [emptyFields, setEmptyFields] = useState([]);
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +44,8 @@ const Signup = () => {
       setError(null);
       console.log("New user created", json);
       dispatch({ type: "CREATE_USER", payload: json });
+      alert("Account created successfully")
+      navigate("/login")
     }
   };
 

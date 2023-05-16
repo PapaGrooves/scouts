@@ -6,20 +6,12 @@ import dlt from "../assets/images/delete.png";
 
 import { useUsersContext } from "../hooks/useUsersContext";
 
-const UserCard = (props, {user}) => {
+const UserCard = (props) => {
 
-  // const [modalIsOpen, setIsOpen] = React.useState(false);
-  
-  // function openModal() {
-  //   setIsOpen(true);
-  // }
-  // function closeModal() {
-  //   setIsOpen(false);
-  // }
   const { dispatch } = useUsersContext()
 
   const handleClick = async () => {
-    const response = await fetch("/api/users/" + user._id, {
+    const response = await fetch("/api/users/" + props.user._id, {
       method: "DELETE"
     })
     const json = await response.json()

@@ -7,7 +7,7 @@
 # server folder dependancies
 # ==========================
 
-# npm install mongodb express cors dotenv axios mongoose
+# npm install mongodb express cors dotenv axios mongoose bcrypt validator jsonwebtoken
 
 # ==========================
 # client folder dependancies
