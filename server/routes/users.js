@@ -3,6 +3,7 @@ const { createUser, getUsers, getUser, deleteUser, updateUser, loginUser, } = re
 
 const router = express.Router()
 
+
 // GET all users
 router.get("/", getUsers)
 
@@ -10,7 +11,8 @@ router.get("/", getUsers)
 // router.get("/:id", getUser)
 
 // POST new user
-router.post("/", createUser)
+router.post("/signup", createUser)
+
 
 // DELETE user
 router.delete("/:id", deleteUser)

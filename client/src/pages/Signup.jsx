@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useUsersContext } from "../hooks/useUsersContext";
+import axios from 'axios';
+
 
 const Signup = () => {
   const { dispatch } = useUsersContext();
@@ -20,22 +22,12 @@ const Signup = () => {
     e.preventDefault();
 
     const user = { fname, lname, email, dob, password, rpassword };
+    try {
+      const response = await axios.post('http://localhost:4000/api/users/signup', user);
+      const json = await response.json();
+  
+      console.log(response.data); // Access the response data
 
-    const response = await fetch("/api/users", {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const json = await response.json();
-
-    if (!response.ok) {
-      setError(json.error);
-      setEmptyFields(json.emptyFields)
-    }
-    if (response.ok) {
-      setEmail("");
       setLname("");
       setFname("");
       setDob("");
@@ -46,7 +38,35 @@ const Signup = () => {
       dispatch({ type: "CREATE_USER", payload: json });
       alert("Account created successfully")
       navigate("/login")
+    } catch (error) {
+      console.error(error); // Handle error
     }
+    // const response = await fetch("/api/users", {
+    //   method: "POST",
+    //   body: JSON.stringify(user),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    // 
+
+  //   if (!response.ok) {
+  //     setError(json.error);
+  //     // // setEmptyFields(json.emptyFields)
+  //   }
+  //   if (response.ok) {
+  //     setEmail("");
+      // setLname("");
+      // setFname("");
+      // setDob("");
+      // setPassword("");
+      // setRpassword("");
+      // setError(null);
+      // console.log("New user created", json);
+      // dispatch({ type: "CREATE_USER", payload: json });
+      // alert("Account created successfully")
+      // navigate("/login")
+  //   }
   };
 
   return (
@@ -60,7 +80,7 @@ const Signup = () => {
           placeholder="example@inbox.com"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
-          className={emptyFields.includes("email") ? 'error' : ""}
+          // className={emptyFields.includes("email") ? 'error' : ""}
         />
 
         <label htmlFor="fname">First Name</label>
@@ -71,7 +91,7 @@ const Signup = () => {
           placeholder="Name"
           onChange={(e) => setFname(e.target.value)}
           value={fname}
-          className={emptyFields.includes("fname") ? 'error' : ""}
+          // className={emptyFields.includes("fname") ? 'error' : ""}
         />
 
         <label htmlFor="lname">Last Name</label>
@@ -82,7 +102,7 @@ const Signup = () => {
           placeholder="Surname"
           onChange={(e) => setLname(e.target.value)}
           value={lname}
-          className={emptyFields.includes("lname") ? 'error' : ""}
+          // className={emptyFields.includes("lname") ? 'error' : ""}
         />
 
         <label htmlFor="dob">Date of Birth</label>
@@ -92,7 +112,7 @@ const Signup = () => {
           id="date"
           onChange={(e) => setDob(e.target.value)}
           value={dob}
-          className={emptyFields.includes("dob") ? 'error' : ""}
+          // className={emptyFields.includes("dob") ? 'error' : ""}
         />
 
         <label htmlFor="password">Password</label>
@@ -103,7 +123,7 @@ const Signup = () => {
           placeholder="************"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
-          className={emptyFields.includes("password") ? 'error' : ""}
+          // className={emptyFields.includes("password") ? 'error' : ""}
         />
 
         <label htmlFor="rpassword">Repeat Password</label>

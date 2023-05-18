@@ -1,6 +1,11 @@
 const User = require("../models/userModel")
 const mongoose = require("mongoose")
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
+const validator = require("validator")
+
+
+
 
 const createToken = (_id) => {
     return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3d' })
@@ -30,8 +35,8 @@ const getUsers = async (req, res) => {
 // create new user
 const createUser = async (req, res) => {
     const { fname, lname, email, password, dob, disclosure, is_admin, availability } = req.body
-
-    let emptyFields = []
+  
+    let emptyFields = [];
 
     if (!email) {
         emptyFields.push("email")
@@ -52,10 +57,41 @@ const createUser = async (req, res) => {
         return res.status(400).json({ error: "Please fill in all fields", emptyFields })
     }
 
+    console.log("endpoint reached")
+
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password, salt)
+
+    const user = await User.create({ 
+        fname, 
+        lname, 
+        email, 
+        password: hash, 
+        dob, 
+        disclosure, 
+        is_admin, 
+        availability 
+    })
+
+    // validation
+    if (!email || !password) {
+        throw Error("All fields must be filled")
+    }
+    if (!validator.isEmail(email)) {
+        throw Error("Enter a valid email")
+    }
+    if (!validator.isStrongPassword(password)) {
+        throw Error("Use stronger password")
+    }
+
+    const exists = await User.findOne({ email })
+
+    if (exists) {
+        throw Error("Email already in use")
+    }
+
     // add doc to db
     try {
-        const user = await User.create({ fname, lname, email, password, dob, disclosure, is_admin, availability })
-
         // create token
         const token = createToken(user._id)
 
@@ -105,7 +141,28 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body
 
     try {
-        const user = await User.login({ email, password })
+        const user = await User.findOne({ email })
+
+        if (!email || !password) {
+            throw Error("All fields must be filled")
+        }
+        if (!user) {
+            throw Error("Incorrect email")
+        }
+        const match = await bcrypt.compare(password, user.password)
+
+        if (!match) {
+            throw Error("Incorrect password")
+        }
+
+
+        // if (user) {
+        //     res.status(201).json({ isAuthenticated: true })
+
+        // }
+        // else {
+        //     res.status(404).json({ isAuthenticated: false })
+        // }
 
         // create token
         const token = createToken(user._id)
