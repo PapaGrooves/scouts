@@ -9,7 +9,7 @@ import { useUsersContext } from "../hooks/useUsersContext";
 const UserCard = (props) => {
   const { dispatch } = useUsersContext();
   const [updatedUser, setUpdatedUser] = useState({});
-  const [user, setUser] = useState(props.user);
+  // const [user, setUser] = useState(props.user);
   // const navigate = useNavigate();
 
   const handleClick = async () => {
@@ -44,11 +44,6 @@ const UserCard = (props) => {
     const json = await response.json();
 
     if (response.ok) {
-
-      setUser((prevUser) => ({
-        ...prevUser,
-        ...json,
-      }));
       // Dispatch the action to update the user in the context
       dispatch({
         type: "UPDATE_USER",
