@@ -21,7 +21,7 @@ const userSchema = new Schema({
     },
     dob: {
         type: Date,
-        // required: true
+        required: true
     },
     is_admin: {
         type: Number,
@@ -32,65 +32,9 @@ const userSchema = new Schema({
         default: "Pending"
     },
     availability: {
-        type: String
+        type: String,
+        default: ""
     }
 })
-
-// STUB static signup method
-// userSchema.statics.signup = async function (email, password) {
-
-//     // validation
-//     if (!email || !password) {
-//         throw Error("All fields must be filled")
-//     }
-//     if (!validator.isEmail(email)) {
-//         throw Error("Enter a valid email")
-//     }
-//     if (!validator.isStrongPassword(password)) {
-//         throw Error("Use stronger password")
-//     }
-
-
-//     const exists = await this.findOne({ email })
-
-//     if (exists) {
-//         throw Error("Email already in use")
-//     }
-
-//     const salt = await bcrypt.genSalt(10)
-//     const hash = await bcrypt.hash(password, salt)
-
-//     const user = await this.create({ email, password: hash })
-
-//     return user
-// }
-
-// STUB static login method
-//userSchema.statics.login = async function (email, password) {
-
-    // FIXME currently POSTMAN doesn't see the fields being filled and throws this error.
-    // No visable bugs at this moment
-    // Code taken form Net Ninja tutorial, possibly something to do with the signup function
-    // That was taken from another tutorial of his
-
-    // validation
-    // if (!email || !password) {
-    //     throw Error("All fields must be filled")
-    // }
-
-    // const user = await this.findOne({ email })
-    // const match = await bcrypt.compare(password, user.password)
-
-    // if (!user || !match) {
-    //     throw Error("Incorrect email or password")
-    // }
-
-    // if (!match) {
-    //     throw Error("Incorrect password")
-    // }
-
-    // return user
-
-//}
 
 module.exports = mongoose.model("User", userSchema)

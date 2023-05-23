@@ -1,25 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import Popup from "reactjs-popup";
-
+// import { useNavigate } from "react-router-dom";
 import edit from "../assets/images/edit.png";
 import dlt from "../assets/images/delete.png";
 
 import { useUsersContext } from "../hooks/useUsersContext";
 
 const UserCard = (props) => {
-
-  const { dispatch } = useUsersContext()
+  const { dispatch } = useUsersContext();
+  const [updatedUser, setUpdatedUser] = useState({});
+  const [user, setUser] = useState(props.user);
+  // const navigate = useNavigate();
 
   const handleClick = async () => {
-    const response = await fetch("/api/users/" + props.user._id, {
-      method: "DELETE"
-    })
-    const json = await response.json()
+    const response = await fetch(
+      "http://localhost:4000/api/users/" + props.user._id,
+      {
+        method: "DELETE",
+      }
+    );
+    const json = await response.json();
 
     if (response.ok) {
-      dispatch({type: "DELETE_USER", payload: json})
+      dispatch({ type: "DELETE_USER", payload: json });
     }
-  }
+  };
+
+  const handleUpdate = async (e, close) => {
+    e.preventDefault() //prevents page refresh
+
+    console.log("handleUpdate triggerred")
+
+    const response = await fetch(
+      "http://localhost:4000/api/users/" + props.user._id,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedUser),
+      }
+    );
+    const json = await response.json();
+
+    if (response.ok) {
+
+      setUser((prevUser) => ({
+        ...prevUser,
+        ...json,
+      }));
+      // Dispatch the action to update the user in the context
+      dispatch({
+        type: "UPDATE_USER",
+        payload: { _id: props.user._id, updatedUser: json },
+      });
+    }
+    console.log("handleUpdate handled")
+    // alert("User data updated successfully. Refresh page to see changes.")
+    // navigate("/helpers")
+    close();
+  };
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    const capitalizedValue =
+      value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  
+    setUpdatedUser((prevUser) => ({
+      ...prevUser,
+      [id]: capitalizedValue,
+    }));
+  };
 
 
   return (
@@ -57,7 +108,7 @@ const UserCard = (props) => {
         >
           {(close) => (
             <div className="adminModal">
-              <p className="close" onClick={() => close()}>
+              <p className="close" onClick={close}>
                 x
               </p>
 
@@ -69,21 +120,46 @@ const UserCard = (props) => {
                 <form action="">
                   <div>
                     <label htmlFor="fname">First Name</label>
-                    <input type="text" id="fname" placeholder={props.fname} />
+                    <input
+                      type="text"
+                      id="fname"
+                      name="fname"
+                      placeholder={props.fname}
+                      value={updatedUser.fname || props.fname}
+                      onChange={handleChange}
+                      // onMouseEnter={changeCase}
+                    />
                   </div>
                   <div>
                     <label htmlFor="lname">Last Name</label>
-                    <input type="text" id="lname" placeholder={props.lname} />
+                    <input
+                      type="text"
+                      id="lname"
+                      name="lname"
+                      placeholder={props.lname}
+                      value={updatedUser.lname || ""}
+                      onChange={handleChange}
+                    />
                   </div>
                   <div>
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" placeholder={props.email} />
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder={props.email}
+                      value={updatedUser.email || ""}
+                      onChange={handleChange}
+                    />
                   </div>
                   <div>
                     <label htmlFor="disclosure">Disclosure</label>
                     <select
                       name="disclosure"
                       id="disclosure"
+                      // defaultValue={props.disclosure}
+                      value={updatedUser.disclosure || ""}
+                      onChange={handleChange}
                     >
                       <option value="" disabled selected hidden>{props.disclosure}</option>
                       <option value="pending">Pending</option>
@@ -93,16 +169,31 @@ const UserCard = (props) => {
 
                   <div>
                     <label htmlFor="dob">Date of Birth</label>
-                    <input type="text" id="dob" placeholder={props.dob} disabled/>
+                    <input
+                      type="text"
+                      id="dob"
+                      name="dob"
+                      placeholder={props.dob}
+                      disabled
+                    />
                   </div>
 
                   <div>
                     <label htmlFor="availability">Availability</label>
-                    <input type="text" id="availability" placeholder={props.availability}/>
+                    <input
+                      type="text"
+                      id="availability"
+                      name="availability"
+                      placeholder={props.availability}
+                      value={updatedUser.availability || ""}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div>
-                    <button type="submit">Update</button>
+                    <button onClick={(e) => handleUpdate(e, close)} type="submit">
+                      Update
+                    </button>
                   </div>
                 </form>
               </div>
@@ -110,9 +201,7 @@ const UserCard = (props) => {
           )}
         </Popup>
 
-        <button className="delete" 
-        onClick= {handleClick}
-        >
+        <button className="delete" onClick={handleClick}>
           <img src={dlt} alt="" />
         </button>
       </div>

@@ -1,72 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useUsersContext } from "../hooks/useUsersContext";
-import axios from 'axios';
-
+import { useSignup } from "../hooks/useSignup";
 
 const Signup = () => {
-  const { dispatch } = useUsersContext();
-
   const [email, setEmail] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [dob, setDob] = useState("");
   const [password, setPassword] = useState("");
   const [rpassword, setRpassword] = useState("");
-  const [error, setError] = useState(null);
-  const [emptyFields, setEmptyFields] = useState([]);
+  const { signup, error, isLoading } = useSignup();
 
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await signup(email, fname, lname, dob, password, rpassword);
 
-    const user = { fname, lname, email, dob, password, rpassword };
-    try {
-      const response = await axios.post('http://localhost:4000/api/users/signup', user);
-      const json = await response.json();
-  
-      console.log(response.data); // Access the response data
-
-      setLname("");
-      setFname("");
-      setDob("");
-      setPassword("");
-      setRpassword("");
-      setError(null);
-      console.log("New user created", json);
-      dispatch({ type: "CREATE_USER", payload: json });
-      alert("Account created successfully")
-      navigate("/login")
-    } catch (error) {
-      console.error(error); // Handle error
+    if (rpassword !== password) {
+      throw new Error("Password doesn't match");
     }
-    // const response = await fetch("/api/users", {
-    //   method: "POST",
-    //   body: JSON.stringify(user),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // 
 
-  //   if (!response.ok) {
-  //     setError(json.error);
-  //     // // setEmptyFields(json.emptyFields)
-  //   }
-  //   if (response.ok) {
-  //     setEmail("");
-      // setLname("");
-      // setFname("");
-      // setDob("");
-      // setPassword("");
-      // setRpassword("");
-      // setError(null);
-      // console.log("New user created", json);
-      // dispatch({ type: "CREATE_USER", payload: json });
-      // alert("Account created successfully")
-      // navigate("/login")
-  //   }
+    alert("Account created successfully")
+    navigate("/")
   };
 
   return (
@@ -80,7 +36,6 @@ const Signup = () => {
           placeholder="example@inbox.com"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
-          // className={emptyFields.includes("email") ? 'error' : ""}
         />
 
         <label htmlFor="fname">First Name</label>
@@ -91,7 +46,6 @@ const Signup = () => {
           placeholder="Name"
           onChange={(e) => setFname(e.target.value)}
           value={fname}
-          // className={emptyFields.includes("fname") ? 'error' : ""}
         />
 
         <label htmlFor="lname">Last Name</label>
@@ -102,17 +56,15 @@ const Signup = () => {
           placeholder="Surname"
           onChange={(e) => setLname(e.target.value)}
           value={lname}
-          // className={emptyFields.includes("lname") ? 'error' : ""}
         />
 
         <label htmlFor="dob">Date of Birth</label>
         <input
           type="date"
-          name="date"
+          name="dob"
           id="date"
           onChange={(e) => setDob(e.target.value)}
           value={dob}
-          // className={emptyFields.includes("dob") ? 'error' : ""}
         />
 
         <label htmlFor="password">Password</label>
@@ -123,7 +75,6 @@ const Signup = () => {
           placeholder="************"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
-          // className={emptyFields.includes("password") ? 'error' : ""}
         />
 
         <label htmlFor="rpassword">Repeat Password</label>
@@ -136,7 +87,9 @@ const Signup = () => {
           value={rpassword}
         />
 
-        <button type="submit">Signup</button>
+        <button disabled={isLoading} type="submit">
+          Signup
+        </button>
 
         {error && <div className="error">{error}</div>}
 

@@ -1,15 +1,77 @@
-const User = require("../models/userModel")
+const User = require("../models/userModel");
+const validator = require("validator");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose")
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
-const validator = require("validator")
-
-
-
-
 const createToken = (_id) => {
-    return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3d' })
+    return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3d' });
 }
+
+const signupUser = async (req, res) => {
+    try {
+        const { email, password, fname, lname, dob, rpassword } = req.body;
+        console.log(req.body)
+        // Validation
+        if (!email || !fname || !lname || !dob || !password || !rpassword) {
+            throw new Error("All fields must be filled");
+        }
+        if (!validator.isEmail(email)) {
+            throw new Error("Enter a valid email");
+        }
+        if (!validator.isStrongPassword(password)) {
+            throw new Error("Use a stronger password");
+        }
+
+        const exists = await User.findOne({ email });
+
+        if (exists) {
+            throw new Error("Email already in use");
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(password, salt);
+
+        const user = await User.create({ email, fname, lname, dob, password: hash, rpassword });
+
+        const token = createToken(user._id);
+
+        res.status(200).json({ email, token });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: "An error occurred during signup", message: error });
+    }
+};
+
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        // Validation
+        if (!email || !password) {
+            throw new Error("All fields must be filled");
+        }
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            throw new Error("Incorrect email or password");
+        }
+
+        const match = await bcrypt.compare(password, user.password);
+
+        if (!match) {
+            throw new Error("Incorrect email or password");
+        }
+
+        // Create token
+        const token = createToken(user._id);
+
+        res.status(200).json({ email, token });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ error: error.message });
+    }
+};
 
 // get all users
 const getUsers = async (req, res) => {
@@ -17,88 +79,20 @@ const getUsers = async (req, res) => {
     res.status(200).json(users)
 }
 // get single user
-// const getUser = async (req, res) => {
-//     const { id } = req.params
+const getUser = async (req, res) => {
+    const { id } = req.params
 
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//         return res.status(404).json({ error: "User doesn't exist" })
-//     }
-
-//     const user = await User.findById(id)
-
-//     if (!user) {
-//         return res.status(404).json({ error: "User doesn't exist" })
-//     }
-
-//     res.status(200).json(user)
-// }
-// create new user
-const createUser = async (req, res) => {
-    const { fname, lname, email, password, dob, disclosure, is_admin, availability } = req.body
-  
-    let emptyFields = [];
-
-    if (!email) {
-        emptyFields.push("email")
-    }
-    if (!fname) {
-        emptyFields.push("fname")
-    }
-    if (!lname) {
-        emptyFields.push("lname")
-    }
-    if (!password) {
-        emptyFields.push("password")
-    }
-    if (!dob) {
-        emptyFields.push("dob")
-    }
-    if (emptyFields.length > 0) {
-        return res.status(400).json({ error: "Please fill in all fields", emptyFields })
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: "User doesn't exist" })
     }
 
-    console.log("endpoint reached")
+    const user = await User.findById(id)
 
-    const salt = await bcrypt.genSalt(10)
-    const hash = await bcrypt.hash(password, salt)
-
-    const user = await User.create({ 
-        fname, 
-        lname, 
-        email, 
-        password: hash, 
-        dob, 
-        disclosure, 
-        is_admin, 
-        availability 
-    })
-
-    // validation
-    if (!email || !password) {
-        throw Error("All fields must be filled")
-    }
-    if (!validator.isEmail(email)) {
-        throw Error("Enter a valid email")
-    }
-    if (!validator.isStrongPassword(password)) {
-        throw Error("Use stronger password")
+    if (!user) {
+        return res.status(404).json({ error: "User doesn't exist" })
     }
 
-    const exists = await User.findOne({ email })
-
-    if (exists) {
-        throw Error("Email already in use")
-    }
-
-    // add doc to db
-    try {
-        // create token
-        const token = createToken(user._id)
-
-        res.status(200).json({ email, token })
-    } catch (error) {
-        res.status(400).json({ error: "Email already in use" })
-    }
+    res.status(200).json(user)
 }
 // delete user
 const deleteUser = async (req, res) => {
@@ -118,68 +112,19 @@ const deleteUser = async (req, res) => {
 }
 // update user
 const updateUser = async (req, res) => {
-    const { id } = req.params
-
+    const { id } = req.params;
+  
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({ error: "User doesn't exist" })
+      return res.status(404).json({ error: "User doesn't exist" });
     }
-
-    const user = await User.findByIdAndUpdate({ _id: id }, {
-        ...req.body
-    })
-
-    if (!user) {
-        return res.status(400).json({ error: "User doesn't exist" })
+  
+    const updatedUser = await User.updateOne({ _id: id }, req.body, {new: true});
+  
+    if (!updatedUser) {
+      return res.status(400).json({ error: "User doesn't exist" });
     }
+  
+    res.status(200).json(updatedUser);
+  };
 
-    res.status(200).json(user)
-}
-
-// login user
-const loginUser = async (req, res) => {
-
-    const { email, password } = req.body
-
-    try {
-        const user = await User.findOne({ email })
-
-        if (!email || !password) {
-            throw Error("All fields must be filled")
-        }
-        if (!user) {
-            throw Error("Incorrect email")
-        }
-        const match = await bcrypt.compare(password, user.password)
-
-        if (!match) {
-            throw Error("Incorrect password")
-        }
-
-
-        // if (user) {
-        //     res.status(201).json({ isAuthenticated: true })
-
-        // }
-        // else {
-        //     res.status(404).json({ isAuthenticated: false })
-        // }
-
-        // create token
-        const token = createToken(user._id)
-
-        res.status(200).json({ email, token })
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
-
-}
-
-
-module.exports = {
-    getUsers,
-    // getUser,
-    createUser,
-    deleteUser,
-    updateUser,
-    loginUser,
-}
+module.exports = { signupUser, loginUser, getUser, deleteUser, updateUser, getUsers };

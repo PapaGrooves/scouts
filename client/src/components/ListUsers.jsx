@@ -8,7 +8,7 @@ import { useUsersContext } from "../hooks/useUsersContext"
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await fetch("/api/users")
+      const response = await fetch("http://localhost:4000/api/users")
       const json = await response.json()
 
       if (response.ok) {
@@ -28,7 +28,7 @@ import { useUsersContext } from "../hooks/useUsersContext"
             name={user.fname + " " + user.lname}
             email={user.email}
             disclosure={user.disclosure}
-            dob={user.dob.toString()}
+            dob={user.dob}
             availability={user.availability}
             user={user}
           />

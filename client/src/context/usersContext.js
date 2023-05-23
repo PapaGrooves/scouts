@@ -16,13 +16,24 @@ export const usersReducer = (state, action) => {
             return {
                 users: state.users.filter((u) => u._id !== action.payload._id)
             }
+        case "UPDATE_USER":
+            const updatedUsers = state.users.map((user) => {
+                if (user._id === action.payload._id) {
+                    return { ...user, ...action.payload.updatedUser };
+                }
+                return user;
+            });
+            return {
+                users: updatedUsers,
+            };
+
         default:
-            return state
+            return state;
     }
 }
 
 export const UsersContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(usersReducer, { users: null })
+    const [state, dispatch] = useReducer(usersReducer, { users: [] })
 
     return (
         <UsersContext.Provider value={{ ...state, dispatch }}>

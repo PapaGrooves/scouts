@@ -1,8 +1,11 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Gallery = () => {
+
+  const { user } = useAuthContext()
+
     const images = [
         {
           original: "https://picsum.photos/id/1018/1000/600/",
@@ -31,7 +34,9 @@ const Gallery = () => {
           />
 
 {/* FIXME create code for image uploads */}
+{user &&(
           <button className="uploadBTN">Upload</button>
+          )}
          </div>
       );
 }
