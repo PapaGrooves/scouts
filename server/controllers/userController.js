@@ -66,7 +66,8 @@ const loginUser = async (req, res) => {
         // Create token
         const token = createToken(user._id);
 
-        res.status(200).json({ email, token });
+        console.log(user)
+        res.status(200).json({ email, token, is_admin: user.is_admin });
     } catch (error) {
         console.log(error);
         res.status(400).json({ error: error.message });

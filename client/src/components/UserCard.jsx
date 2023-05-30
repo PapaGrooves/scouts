@@ -74,10 +74,15 @@ useEffect(() => {
       [id]: capitalizedValue,
     }));
   };
-  if (props.user.is_admin === 1){
+  // if (props.user.is_admin === 1){
     console.log(props,"usercard")
 
+    const adminStatus = localStorage.getItem("user")
+    const jsn = JSON.parse(adminStatus)
+    console.log(jsn)
+
   return (
+    
     <div className="user">
       <div className="name">
         <label htmlFor="">Name</label>
@@ -99,6 +104,7 @@ useEffect(() => {
         <p>{props.user.availability}</p>
       </div>
 
+      {jsn.is_admin === 1 ? ( <> 
       <div className="btns">
         {/* {isAdmin ? (
           <> */}
@@ -221,10 +227,14 @@ useEffect(() => {
           {/* </>
         ) : null } */}
       </div>
+      
+     </>): null}
     </div>
   );
 };
-}
+
+
+
 
 
 

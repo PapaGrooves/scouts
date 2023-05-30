@@ -17,14 +17,14 @@ function ListUsers() {
     fetchUsers();
   }, [dispatch]);
   console.log(users, "coming from ListofUsers");
+
+  
   return (
     <div className="usersWrap">
       {users &&
         users.map((user) => (
           <li key={user._id}>
-            
               <UserCard user={user} />
-            
           </li>
         ))}
     </div>
