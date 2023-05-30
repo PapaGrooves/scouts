@@ -81,6 +81,13 @@ input.error {
   border: 2px solid #d11a2a;
 }
 
+.smallPrint {
+  padding: 0;
+  margin: -24px 0;
+  color: #f0e6e6;
+  font-size: 12px;
+}
+
 @media (min-width: 768px) {
   .section_title {
     text-align: left;
@@ -188,6 +195,15 @@ a {
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; /* Make sure it's on top of other elements */
 }
 
 @media (min-width: 768px) {
@@ -553,6 +569,18 @@ footer .copyright {
   padding: 32px;
   gap: 32px;
   background: #597815;
+}
+.badgesModal .header button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badgesModal .header button img {
+  width: 24px;
+  height: 24px;
 }
 .badgesModal .header .image {
   width: 120px;

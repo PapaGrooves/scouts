@@ -1,48 +1,90 @@
 import { Link } from "react-router-dom";
-import Fleur from "../assets/images/fleur.png"
+import { useState } from "react";
+import Fleur from "../assets/images/fleur.png";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const Navigation = () => {
-const { logout } = useLogout()
-const { user } = useAuthContext()
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   const handleClick = () => {
-    logout()
-    alert("Logged out successfully")
-  }
+    logout();
+    alert("Logged out successfully");
+  };
+
+  const handleMenuToggle = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuItemClick = () => {
+    setMenuOpen(false);
+  };
+
   const Nav = (
-    <ul className="menu">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/badges">Badges</Link></li>
-                <li><Link to="/gallery">Gallery</Link></li>
-                <li><Link to="/games">Games</Link></li>
-                {user && (
-                <li><Link to="/helpers">Helpers</Link></li>
-                )}
-                {!user && (
-                <li><Link to="/login">Login</Link></li>
-                )}
-                {user && (
-                <li onClick={handleClick}><Link to="/">Logout</Link></li>
-                )}
-        </ul>
+    <ul className={`menu ${isMenuOpen ? "open" : ""}`}>
+      <li onClick={handleMenuItemClick}>
+        <Link to="/">Home</Link>
+      </li>
+      <li onClick={handleMenuItemClick}>
+        <Link to="/badges">Badges</Link>
+      </li>
+      <li onClick={handleMenuItemClick}>
+        <Link to="/gallery">Gallery</Link>
+      </li>
+      <li onClick={handleMenuItemClick}>
+        <Link to="/games">Games</Link>
+      </li>
+      {user && (
+        <li onClick={handleMenuItemClick}>
+          <Link to="/helpers">Helpers</Link>
+        </li>
+      )}
+      {!user && (
+        <li onClick={handleMenuItemClick}>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
+      {user && (
+        <li onClick={() => { handleMenuItemClick(); handleClick(); }}>
+          <Link to="/">Logout</Link>
+        </li>
+      )}
+    </ul>
   );
-  
+
+  const handleOutsideClick = (event) => {
+    const menu = document.querySelector(".menu");
+    if (menu && !menu.contains(event.target)) {
+      setMenuOpen(false);
+    }
+  };
+
   return (
     <>
-{/* STUB original code by  mutedblues on Codepen.io
-    https://codepen.io/mutedblues/pen/MmPNPG?editors=0110 */}
       <div className="header">
         <div className="logo">
-         <Link to="/"> <img src={Fleur} alt="" /> </Link>
+          <Link to="/">
+            {" "}
+            <img src={Fleur} alt="" />{" "}
+          </Link>
         </div>
-        <input className="menu-btn" type="checkbox" id="menu-btn" />
+        <input
+          className="menu-btn"
+          type="checkbox"
+          id="menu-btn"
+          checked={isMenuOpen}
+          onChange={handleMenuToggle}
+        />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="navicon"></span>
         </label>
         {Nav}
       </div>
+      {isMenuOpen && (
+        <div className="menu-overlay" onClick={handleOutsideClick}></div>
+      )}
     </>
   );
 };

@@ -5,7 +5,7 @@ import dlt from "../assets/images/delete.png";
 // import { AuthContext } from "../context/AuthContext";
 import { useUsersContext } from "../hooks/useUsersContext";
 
-const UserCard = (props) => {
+const UserCardAdmin = (props) => {
   const { dispatch } = useUsersContext();
   const [updatedUser, setUpdatedUser] = useState({});
   // const { user } = useContext(AuthContext);
@@ -228,4 +228,4 @@ useEffect(() => {
 
 
 
-export default UserCard;
+export default UserCardAdmin;
