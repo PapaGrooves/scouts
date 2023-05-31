@@ -1,12 +1,15 @@
 // controllers/imageController.js
 const Image = require('../models/imgModel');
-
+const fs = require('fs');
 
 exports.uploadImage = (req, res) => {
     if (!req.file) {
       res.status(400).send('No file uploaded');
     } else {
-      const image = new Image({ filename: req.file.originalname });
+      const image = new Image({
+        filename: req.file.originalname,
+        imageData: fs.readFileSync(req.file.path),
+      });
       image.save((err, savedImage) => {
         if (err) {
           console.error(err);
