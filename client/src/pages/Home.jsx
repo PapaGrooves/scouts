@@ -10,8 +10,6 @@ import { useState } from "react";
 import { v4 } from 'uuid'
 
 const Home = () => {
-
-  // const location = useLocation();
   
   const [guides] = useState(Guides);
   const [events] = useState(Events);

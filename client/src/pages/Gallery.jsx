@@ -33,30 +33,6 @@ const Gallery = () => {
       });
   };
 
-  // const fetchImages = async () => {
-  //   try {
-  //     const response = await axios.get('http://localhost:4000/api/uploads');
-  //     setImages(response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching images:', error);
-  //   }
-  // };
-
-  // const images = [
-  //   {
-  //     original: "https://picsum.photos/id/1018/1000/600/",
-  //     thumbnail: "https://picsum.photos/id/1018/250/150/",
-  //   },
-  //   {
-  //     original: "https://picsum.photos/id/1015/1000/600/",
-  //     thumbnail: "https://picsum.photos/id/1015/250/150/",
-  //   },
-  //   {
-  //     original: "https://picsum.photos/id/1019/1000/600/",
-  //     thumbnail: "https://picsum.photos/id/1019/250/150/",
-  //   },
-  // ];
-
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -70,7 +46,7 @@ const Gallery = () => {
     fetchImages();
   }, []);
 
-  const adminStatus = localStorage.getItem("user");
+  // const adminStatus = localStorage.getItem("user");
   // const jsn = JSON.parse(adminStatus);
 
   return (
@@ -100,7 +76,8 @@ const Gallery = () => {
         {images.map((image) => (
           <div key={v4()}>
           <img
-            src={`data:image/jpeg;base64,${image.imageData.toString("base64")}`}
+            src={image.imageData}
+            alt="scout cubs"
           />
           </div>
         ))}
