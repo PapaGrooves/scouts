@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import edit from "../assets/images/edit.png";
 import dlt from "../assets/images/delete.png";
-// import { AuthContext } from "../context/AuthContext";
 import { useUsersContext } from "../hooks/useUsersContext";
 
 const UserCard = (props) => {
   const { dispatch } = useUsersContext();
   const [updatedUser, setUpdatedUser] = useState({});
-  // const { user } = useContext(AuthContext);
-
-  const [isAdmin, setIsAdmin] = useState(false);
-
-useEffect(() => {
-  if (props.is_admin === 1) {
-    setIsAdmin(true);
-  }
-}, [props.is_admin]);
-
-  // const isAdmin = props.is_admin === 1;
 
   const handleClick = async () => {
     const response = await fetch(
@@ -74,19 +62,14 @@ useEffect(() => {
       [id]: capitalizedValue,
     }));
   };
-  // if (props.user.is_admin === 1){
-    console.log(props,"usercard")
-
     const adminStatus = localStorage.getItem("user")
     const jsn = JSON.parse(adminStatus)
-    console.log(jsn)
 
   return (
-    
     <div className="user">
       <div className="name">
         <label htmlFor="">Name</label>
-        <p>{props.user.name}</p>
+        <p>{props.user.fname + " " + props.user.lname}</p>
       </div>
 
       <div className="email">
@@ -232,10 +215,5 @@ useEffect(() => {
     </div>
   );
 };
-
-
-
-
-
 
 export default UserCard;

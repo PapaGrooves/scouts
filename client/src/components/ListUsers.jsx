@@ -16,9 +16,7 @@ function ListUsers() {
     };
     fetchUsers();
   }, [dispatch]);
-  console.log(users, "coming from ListofUsers");
 
-  
   return (
     <div className="usersWrap">
       {users &&

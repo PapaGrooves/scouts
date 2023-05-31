@@ -668,6 +668,26 @@ footer .copyright {
   margin-top: 32px;
   width: 104px;
 }
+.galleryWrap .pendingBTN {
+  background: none;
+  border: #9ed628 3px solid;
+  margin-top: 32px;
+  position: relative;
+}
+.galleryWrap .pendingBTN .counter {
+  width: 32px;
+  height: 32px;
+  background: #d11a2a;
+  border-radius: 100%;
+  border: #d2cfcf solid 2px;
+  position: absolute;
+  color: #f0e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -16px;
+  right: -16px;
+}
 
 @media (hover: hover) and (pointer: fine) {
   .image-gallery-icon {
