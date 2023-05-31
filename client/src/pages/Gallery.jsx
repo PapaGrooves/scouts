@@ -1,14 +1,15 @@
-import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
+import { v4 } from 'uuid'
+
 
 const Gallery = () => {
   const { user } = useAuthContext();
   const [selectedFile, setSelectedFile] = useState(null);
   const [images, setImages] = useState([]);
-
+  // const [imageSrc, setImageSrc] = useState("");
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -16,11 +17,11 @@ const Gallery = () => {
 
   const handleUpload = () => {
     const formData = new FormData();
-    formData.append('image', selectedFile);
+    formData.append("image", selectedFile);
 
-    fetch('api/uploads', {
-      method: 'POST',
-      body: formData
+    fetch("/api/uploads", {
+      method: "POST",
+      body: formData,
     })
       .then((response) => response.text())
       .then((result) => {
@@ -28,23 +29,19 @@ const Gallery = () => {
         // Do something with the result
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   };
 
-  const fetchImages = async () => {
-    try {
-      const response = await axios.get('http://localhost:4000/api/uploads');
-      setImages(response.data);
-    } catch (error) {
-      console.error('Error fetching images:', error);
-    }
-  };
-  
+  // const fetchImages = async () => {
+  //   try {
+  //     const response = await axios.get('http://localhost:4000/api/uploads');
+  //     setImages(response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching images:', error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchImages();
-  }, []);
   // const images = [
   //   {
   //     original: "https://picsum.photos/id/1018/1000/600/",
@@ -60,32 +57,26 @@ const Gallery = () => {
   //   },
   // ];
 
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/api/uploads");
+        setImages(response.data);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
+
   const adminStatus = localStorage.getItem("user");
-  const jsn = JSON.parse(adminStatus);
+  // const jsn = JSON.parse(adminStatus);
 
   return (
     <div className="galleryWrap">
-      {/* <ImageGallery
-        className="gallery"
-        items={images}
-        showPlayButton={true}
-        showFullscreenButton={true}
-        slideInterval={3000}
-        slideOnThumbnailOver={true}
-        showIndex={true}
-      /> */}
- <div className="image-gallery">
-      {images.map((image) => (
-        <img
-          key={image._id}
-          src={`http://localhost:4000/api/uploads/${image.filename}`}
-          // alt="Gallery Image"
-        />
-      ))}
-    </div>
-      {/* FIXME create code for image uploads */}
-      {user && (
-        <div>
+       {user && (
+        <div className="imageUpload">
           {/* This is the input for image selection */}
           <input
             type="file"
@@ -97,14 +88,25 @@ const Gallery = () => {
           <button onClick={handleUpload}>Upload</button>
         </div>
       )}
-      {jsn.is_admin === 1 ? (
+      {/* {jsn.is_admin === 1 ? (
         <>
           <button className="pendingBTN">
             Pending
             <div className="counter">0</div>
           </button>
         </>
-      ) : null}
+      ) : null} */}
+      <div className="imageGallery">
+        {images.map((image) => (
+          <div key={v4()}>
+          <img
+            src={`data:image/jpeg;base64,${image.imageData.toString("base64")}`}
+          />
+          </div>
+        ))}
+      </div>
+      {/* FIXME create code for image uploads */}
+     
     </div>
   );
 };

@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes
 app.use("/api/users", usersRoutes)
-app.use('/api/uploads', express.static('uploads'));
+app.use('/uploads', express.static('uploads'));
 app.use('/api/uploads', imgRoutes);
 
 

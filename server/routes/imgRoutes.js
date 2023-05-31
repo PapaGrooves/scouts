@@ -9,7 +9,4 @@ const upload = multer({ dest: 'uploads/' });
 router.post('/', upload.single('image'), imageController.uploadImage);
 router.get('/', imageController.getImages);
 
-
-
-
 module.exports = router;
