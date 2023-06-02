@@ -11,7 +11,7 @@ const Guides = [
         pdf: "",
     },
     {
-        name: "Helpers",
+        name: "Disclosure & Training",
         icon: `${Help}`,
         pdf: "",
     },

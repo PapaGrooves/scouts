@@ -62,6 +62,7 @@ const UserCard = (props) => {
       [id]: capitalizedValue,
     }));
   };
+  
     const adminStatus = localStorage.getItem("user")
     const jsn = JSON.parse(adminStatus)
 

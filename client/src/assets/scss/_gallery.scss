@@ -2,7 +2,7 @@
 
 .galleryWrap {
   min-width: 300px;
-  max-width: 700px;
+  max-width: 1200px;
   margin: 64px auto;
 
   width: 100%;
@@ -19,12 +19,20 @@
   svg {
     max-height: 40px;
   }
-  .uploadBTN {
-    margin-top: 32px;
-    width: 104px;
-  }
+  
   .imageUpload {
-
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 16px;
+    input {
+      // max-width: 300px;
+      margin: auto;
+    }
+   button {
+    width: 100px;
+    margin: auto;
+   }
   }
 
   .imageGallery {
@@ -41,7 +49,10 @@
       aspect-ratio: 16/9;
       border-radius: 16px;
       overflow: hidden;
-    img {
+      
+      img {
+        background-size: cover;
+
       display: block;
     }
   }

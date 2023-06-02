@@ -6,14 +6,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error, isLoading } = useLogin();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     await login(email, password);
-    alert("Logged in successfully")
-    navigate("/")
+    alert("Logged in successfully");
+    navigate("/");
   };
   return (
     <>
@@ -42,7 +42,9 @@ const Login = () => {
           value={password}
         />
 
-        <button disabled={isLoading}type="submit">Login</button>
+        <button disabled={isLoading} type="submit">
+          Login
+        </button>
         {error && <div className="error">{error}</div>}
         <p>
           Dont have an account? Become a helper{" "}

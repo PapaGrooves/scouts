@@ -11,7 +11,7 @@ const Signup = () => {
   const [rpassword, setRpassword] = useState("");
   const { signup, error, isLoading } = useSignup();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,8 +21,8 @@ const Signup = () => {
       throw new Error("Password doesn't match");
     }
 
-    alert("Account created successfully")
-    navigate("/")
+    alert("Account created successfully");
+    navigate("/");
   };
 
   return (
